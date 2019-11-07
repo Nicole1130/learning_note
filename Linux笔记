@@ -1,0 +1,8 @@
+打开终端快捷方式：ctrl+alt+t
+关闭终端快捷方式：ctrl+shift+q
+
+
+添加修改环境变量路径：
+  1.命令行下输入 sudo gedit /etc/profile  以管理员身份使用gedit打开/etc/profile文件（不用vim是因为操作复杂）
+  2.添加路径。以anaconda3为例：export PATH=/anaconda3/bin:$PATH
+  3.保存退出。不必重启机器，可以使用命令行输入  source /etc/profile  使配置生效
