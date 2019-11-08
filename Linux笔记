@@ -6,3 +6,13 @@
   1.命令行下输入 sudo gedit /etc/profile  以管理员身份使用gedit打开/etc/profile文件（不用vim是因为操作复杂）
   2.添加路径。以anaconda3为例：export PATH=/anaconda3/bin:$PATH
   3.保存退出。不必重启机器，可以使用命令行输入  source /etc/profile  使配置生效
+
+
+在ubuntu上使用spyder运行代码会出现import自定义类报错的问题，原因在于它会查找系统的Python路径而非当前路径，因此需要在代码顶端先将当前路径临时加入系统路径。
+  import sys
+  import os
+  sys.path.append(os.path.dirname(sys.argv[0]))
+  关于获取相关路径的总结如下：
+      print(sys.argv[0]) #获得当前代码具体目录(到.py)
+      print(os.path.dirname(sys.argv[0])) #获得当前代码所在的上级目录
+      print(os.getcwd()) #获得当前代码所在的上上级目录
