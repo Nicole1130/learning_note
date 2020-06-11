@@ -1,0 +1,57 @@
+基于weui，需要但不仅限于在html中引入css依赖
+<link rel="stylesheet" href="css/weui.min.css"/>
+<link rel="stylesheet" href="css/app.css"/>
+和js依赖
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.min.js"></script>
+<script src="js/weui.min.js"></script>
+<!-------------------------------------------------------->
+<!-------------------------------------------------------->
+<!-- 点击查询按钮跳出提示框 -->
+<script type="text/javascript">
+    $(function(){
+        // #后跟元素id，‘click’表示点击事件
+        $('#find').on('click', function(){
+            console.log("测试"); // 控制台输出log
+            weui.toast("提示框成功",1000); //跳出提示框显示“提示框成功”，停留1000ms=1s
+        });
+    });
+</script>
+<!-------------------------------------------------------->
+<!-- 点击按钮在本窗体中跳转页面 -->
+<script type="text/javascript">
+    $(function(){
+        $('#find').on('click', function(){
+            $(window).attr('location',"search.html");
+        });
+    });
+</script>
+<!-------------------------------------------------------->
+<!-- 设置选择器下拉框 -->
+<select id="select">
+      <option>选项1</option>
+      <option>选项2</option>
+</select>
+<!-------------------------------------------------------->
+<!-- 点击查询按钮获取selecter所选项 -->
+<script type="text/javascript">
+    $(function(){
+        $('#find').on('click', function(){
+            var options = $("#class_selecter option:selected");
+            weui.toast(options.text(),1000);
+        });
+    });
+</script>
+<!--------------------------------------------------------->
+<!-- 点击按钮获取文本框中文本信息 -->
+<script type="text/javascript">
+    $(function(){
+        $('#find').on('click', function(){
+            var options = $("#js_input").val(); #取val值后无需再.text()
+            weui.toast(options,1000);
+        });
+    });
+</script>
+<!-------------------------------------------------------->
+
+
