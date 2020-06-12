@@ -1,23 +1,23 @@
-一、安装：  
+#一、安装：  
     1.https://dev.mysql.com/downloads/mysql/ 下载合适电脑配置的zip包。点击download后不需要注册，直接选左下角“No thanks, just start my download”；  
     2.解压，添加.bin目录到环境变量；  
     3.mysql根目录文件下面新建一个mysql.ini和一个data文件夹。mysql.ini内容如下：  
-                                            [mysql]  
-                                            # 设置mysql客户端默认字符集  
-                                            default-character-set=utf8   
-                                            [mysqld]  
-                                            #设置3306端口  
-                                            port = 3306   
-                                            # ！！！！！！！！！！！！设置mysql的安装目录！！！！！！！！！！！  
-                                            basedir=D:\Nicole\software\mysql-8.0.20-winx64  
-                                            # ！！！！！！！！！设置mysql数据库的数据的存放目录！！！！！！！！  
-                                            datadir=D:\Nicole\software\mysql-8.0.20-winx64\data  
-                                            # 允许最大连接数  
-                                            max_connections=200  
-                                            # 服务端使用的字符集默认为8比特编码的latin1字符集  
-                                            character-set-server=utf8  
-                                            # 创建新表时将使用的默认存储引擎  
-                                            default-storage-engine=INNODB  
+        [mysql]  
+        # 设置mysql客户端默认字符集  
+        default-character-set=utf8   
+        [mysqld]  
+        #设置3306端口  
+        port = 3306   
+        # ！！！！！！！！！！！！设置mysql的安装目录！！！！！！！！！！！  
+        basedir=D:\Nicole\software\mysql-8.0.20-winx64  
+        # ！！！！！！！！！设置mysql数据库的数据的存放目录！！！！！！！！  
+        datadir=D:\Nicole\software\mysql-8.0.20-winx64\data  
+        # 允许最大连接数  
+        max_connections=200  
+        # 服务端使用的字符集默认为8比特编码的latin1字符集  
+        character-set-server=utf8  
+        # 创建新表时将使用的默认存储引擎  
+        default-storage-engine=INNODB  
     4.以管理员身份打开cmd命令窗口。输入：mysqld --initialize --user=mysql --console。如报错可能是缺少依赖文件。成功则会显示初始密码，需记录下来后续使用。。
        *vcruntime140_1.dll链接: https://pan.baidu.com/s/1-46kOeYmjF6i4at1sHL0uA 提取码: m52r。
     5.以管理员身份打开cmd命令窗口。输入：mysqld install。显示成功后可验证【任务管理器】中【服务】中是否有mysql服务，此时因处于关闭状态。
