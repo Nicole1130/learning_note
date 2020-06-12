@@ -1,4 +1,4 @@
-#一、安装：  
+##一、安装：  
     1.https://dev.mysql.com/downloads/mysql/ 下载合适电脑配置的zip包。点击download后不需要注册，直接选左下角“No thanks, just start my download”；  
     2.解压，添加.bin目录到环境变量；  
     3.mysql根目录文件下面新建一个mysql.ini和一个data文件夹。mysql.ini内容如下：  
