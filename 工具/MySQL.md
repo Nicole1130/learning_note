@@ -32,9 +32,9 @@
 11.开启Navicat，【文件】-【新建连接】中输入连接名称、主机ip、用户名和密码。【测试连接】并点击【确定】完成。  
 ## 二、idea中创建springboot链接MySQL  
 > 需了解的背景知识：  
-* Spring框架是Java平台上的一种开源应用框架，SpringBoot是2014年开源的轻量级框架。目的是通过配置来进一步简化Spring应用的整个搭建和开发过程。  
-* JDBC全称Java Database Connectivity，是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口。  
-* MyBatis是对JDBC的进一步封装，是一个支持普通SQL查询，存储过程和高级映射的优秀持久层框架。它消除了几乎所有的JDBC代码和参数的手工设置以及对结果集的检索封装。可以使用简单的XML或注解，将sql语言写至项目的Java文件中，完成与数据库的交互。  
+> * Spring框架是Java平台上的一种开源应用框架，SpringBoot是2014年开源的轻量级框架。目的是通过配置来进一步简化Spring应用的整个搭建和开发过程。  
+> * JDBC全称Java Database Connectivity，是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口。  
+> * MyBatis是对JDBC的进一步封装，是一个支持普通SQL查询，存储过程和高级映射的优秀持久层框架。它消除了几乎所有的JDBC代码和参数的手工设置以及对结果集的检索封装。可以使用简单的XML或注解，将sql语言写至项目的Java文件中，完成与数据库的交互。  
 
 1.新建项目时除了勾选相应依赖外，还需添加【SQL】中【mysql driver】【JDBC】 和【mybatis framework】。  
 2.打开项目后，右侧找到【database】选择【mysql】。输入name（样式为：库名@localhost）、用户名user和密码password、库名database、url（样式为jdbc:mysql://localhost:3306/库名） 。如下方提示没有driver则点击下载。  
@@ -47,14 +47,14 @@
 # 3306是mysql默认端口，test是库名称
 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test 
 # 设置用户名和密码
-spring.datasource.username=root
-spring.datasource.password=root
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.max-idle=10
-spring.datasource.max-wait=10000
-spring.datasource.min-idle=5
-spring.datasource.initial-size=5
-jdbc.DriverClassName=com.mysql.cj.jdbc.Driver
+	spring.datasource.username=root
+	spring.datasource.password=root
+	spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+	spring.datasource.max-idle=10
+	spring.datasource.max-wait=10000
+	spring.datasource.min-idle=5
+	spring.datasource.initial-size=5
+	jdbc.DriverClassName=com.mysql.cj.jdbc.Driver
 ```
 如使用maven可能还需的依赖，在pom.xml中添加并等待它自动下载更新  
 ```
@@ -97,7 +97,7 @@ jdbc.DriverClassName=com.mysql.cj.jdbc.Driver
 ```
 5.根目录下自动生成的XXXApplication类为springboot的入口启动文件，运行该文件启动进程。  
 6.为了在项目程序中连接数据库，新建5个java class(准确说其中2个为接口)，分别为  
-> * XXXController——class类，用来向外部访问提供接口映射的函数，即当外部请求访问所设定的网页地址时，服务器将采取的措施。  
+* XXXController——class类，用来向外部访问提供接口映射的函数，即当外部请求访问所设定的网页地址时，服务器将采取的措施。  
 * XXXService——interface接口，只用来定义服务器端提供功能的函数。  
 * XXXServiceImpl——class类，是服务器端提供功能的具体函数实现。  
 * XXXMapper——interface接口，用来将Java函数与sql语言做关联的接口。  
