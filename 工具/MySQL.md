@@ -3,7 +3,7 @@
 2.解压，添加.bin目录到环境变量；  
 3.mysql根目录文件下面新建一个mysql.ini和一个data文件夹。mysql.ini内容如下：
 
-	[mysql]  
+        [mysql]  
         # 设置mysql客户端默认字符集  
         default-character-set=utf8   
         [mysqld]  
@@ -24,7 +24,7 @@
 > 如缺少 vcruntime140_1.dll 下载链接为: https://pan.baidu.com/s/1-46kOeYmjF6i4at1sHL0uA 提取码: m52r。  
 
 5.输入：mysqld install。显示成功后可验证【任务管理器】中【服务】中是否有mysql服务，此时因处于关闭状态。  
-6.输入：net start mysql。成功应显示服务已开启。
+6.输入：net start mysql。成功应显示服务已开启。  
 7.服务开启后，命令行输入： mysql -u root -p 跳出输入密码提示，输入先前记录的初始密码。出现Welcome则表示已成功安装mysql。  
 8.在命令行mysql-> 后输入：set password='root'; （注意分号需输入）设置账户密码为root。  
 9.命令行输入：quit 。退出。  
