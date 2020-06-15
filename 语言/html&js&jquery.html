@@ -53,5 +53,21 @@
     });
 </script>
 <!-------------------------------------------------------->
-
+<!-- 获取cookie并显示在网页对应元素中 -->
+<!-- 想在加载页面时运行，设<body onload="getcookie()"> -->
+<script>
+    function getcookie(){
+        var arr = document.cookie.split(";"); // 获取网页cookie并以“；”分隔成键值对数组
+        var key = "name"; // 定义想要获取的键名
+        for(var i=0; i<arr.length; i++){  // 遍历
+            var ass=arr[i].split("=");    // 将键值对以“=”分隔
+            if(ass[0].trim() == key){      // 当键为所需时
+                var name = decodeURIComponent(ass[1]);  // 对值进行utf8解码（仅在值为中文时使用）
+                document.getElementById("user_name").innerHTML = name;  // 设置页面内id为user_name的元素并将其html设为值的内容（本例中元素为span标签，所以可以直接写入文本无需写其他html）
+                return "";
+            }
+        }
+        return false;
+    }
+</script>
 
