@@ -19,7 +19,7 @@
         # 创建新表时将使用的默认存储引擎  
         default-storage-engine=INNODB  
     4.以管理员身份打开cmd命令窗口。输入：mysqld --initialize --user=mysql --console。如报错可能是缺少依赖文件。成功则会显示初始密码，需记录下来后续使用。  
-        *注 vcruntime140_1.dll链接: https://pan.baidu.com/s/1-46kOeYmjF6i4at1sHL0uA 提取码: m52r。  
+> 注 vcruntime140_1.dll链接: https://pan.baidu.com/s/1-46kOeYmjF6i4at1sHL0uA 提取码: m52r。  
     5.输入：mysqld install。显示成功后可验证【任务管理器】中【服务】中是否有mysql服务，此时因处于关闭状态。  
     6.输入：net start mysql。成功应显示服务已开启。
     7.服务开启后，命令行输入： mysql -u root -p 跳出输入密码提示，输入先前记录的初始密码。出现Welcome则表示已成功安装mysql。  
@@ -31,5 +31,5 @@
     1.新建项目时除了勾选相应依赖外，还需添加【SQL】中【mysql driver】 和【mybatis framework】。
     2.打开项目后，右侧找到【database】选择【mysql】。输入name（样式为：库名@localhost）、用户名user和密码password、库名database、url（样式为jdbc:mysql://localhost:3306/库名）。如下方提示没有driver则点击下载。
     3.点击test connection链接，如成功应显示绿勾和mysql版本信息。
-        > *若失败，提示Server returns invalid timezone. Go to 'Advanced' tab and set 'serverTimezone' property manually.说明mysql时区未设    置。解决方案见https://blog.csdn.net/ITMan2017/article/details/100601438 或者（1）进入命令窗口（Win + R），连接数据库 mysql -hlocalhost -uroot -p，回车，输入密码，回车，进入mysql.（2）输入 show variables like'%time_zone'; （注意分号需输入），回车，第二项中显示 SYSTEM 表明确实没有设置时区。（3）输入set global time_zone = '+8:00'; 设置成功即可返回idea重新测试连接。
+> *若失败，提示Server returns invalid timezone. Go to 'Advanced' tab and set 'serverTimezone' property manually.说明mysql时区未设    置。解决方案见https://blog.csdn.net/ITMan2017/article/details/100601438 或者（1）进入命令窗口（Win + R），连接数据库 mysql -hlocalhost -uroot -p，回车，输入密码，回车，进入mysql.（2）输入 show variables like'%time_zone'; （注意分号需输入），回车，第二项中显示 SYSTEM 表明确实没有设置时区。（3）输入set global time_zone = '+8:00'; 设置成功即可返回idea重新测试连接。
     
