@@ -102,8 +102,7 @@
 * XXXServiceImpl——class类，是服务器端提供功能的具体函数实现。  
 * XXXMapper——interface接口，用来将Java函数与sql语言做关联的接口。  
 * XXXEntity——class类，用来将数据库中元素定义为java类的函数，数据库中每一列对应该java对象的一个属性。  
-
-	内部具体代码demo可参考https://www.jianshu.com/p/ca185e2b19fe  
+> 内部具体代码demo可参考https://www.jianshu.com/p/ca185e2b19fe  
 7.需要注意的是，为了解决@Autowired的注入问题，应在入口文件XXXApplication类中把新建的文件路径全部引入，可以使用他们共同的父目录。缺少路径会在启动时报错，提示找不到相应的bean。在import后加入代码：  
 ```
 import org.mybatis.spring.annotation.MapperScan;
