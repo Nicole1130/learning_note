@@ -3,7 +3,7 @@
 2.解压，添加.bin目录到环境变量；  
 3.mysql根目录文件下面新建一个mysql.ini和一个data文件夹。mysql.ini内容如下：
 
-        [mysql]  
+		[mysql]  
         # 设置mysql客户端默认字符集  
         default-character-set=utf8   
         [mysqld]  
@@ -33,5 +33,15 @@
 ## 二、idea中创建springboot链接MySQL
 1.新建项目时除了勾选相应依赖外，还需添加【SQL】中【mysql driver】 和【mybatis framework】。
 2.打开项目后，右侧找到【database】选择【mysql】。输入name（样式为：库名@localhost）、用户名user和密码password、库名database、url（样式为jdbc:mysql://localhost:3306/库名）。如下方提示没有driver则点击下载。
-3.点击test connection链接，如成功应显示绿勾和mysql版本信息。
+3.点击test connection链接，如成功应显示绿勾和mysql版本信息。点击确定正式载入项目。
 > 若失败，提示Server returns invalid timezone. Go to 'Advanced' tab and set 'serverTimezone' property manually.说明mysql时区未设    置。解决方案见https://blog.csdn.net/ITMan2017/article/details/100601438 或者（1）进入命令窗口（Win + R），连接数据库 mysql -hlocalhost -uroot -p，回车，输入密码，回车，进入mysql.（2）输入 show variables like'%time_zone'; （注意分号需输入），回车，第二项中显示 SYSTEM 表明确实没有设置时区。（3）输入set global time_zone = '+8:00'; 设置成功即可返回idea重新测试连接。
+
+4.打开application.properties添加
+
+```
+spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/库名?setUnicode=true&characterEncoding=utf8
+spring.datasource.username=用户名
+spring.datasource.password=密码
+```
+		
