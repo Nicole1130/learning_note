@@ -27,7 +27,7 @@
 6.输入：**net start mysql** 成功应显示服务已开启。  
 7.服务开启后，命令行输入： **mysql -u root -p** 跳出输入密码提示，输入先前记录的初始密码。出现Welcome则表示已成功安装mysql。  
 8.在命令行mysql-> 后输入：**set password='root';** （注意分号需输入）设置账户密码为root。  
-9.命令行输入：**quit** 。退出。  
+9.命令行输入：**quit**  退出。  
 10.下载破解版数据库可视化工具Navicat，https://www.52pojie.cn/thread-952490-1-1.html 按操作说明破解安装。  
 11.开启Navicat，【文件】-【新建连接】中输入连接名称、主机ip、用户名和密码。【测试连接】并点击【确定】完成。  
 ## 二、idea中创建springboot链接MySQL  
@@ -103,7 +103,7 @@
 * XXXMapper——interface接口，用来将Java函数与sql语言做关联的接口。  
 * XXXEntity——class类，用来将数据库中元素定义为java类的函数，数据库中每一列对应该java对象的一个属性。  
 
-内部具体代码demo可参考https://www.jianshu.com/p/ca185e2b19fe  
+	内部具体代码demo可参考https://www.jianshu.com/p/ca185e2b19fe  
 7.需要注意的是，为了解决@Autowired的注入问题，应在入口文件XXXApplication类中把新建的文件路径全部引入，可以使用他们共同的父目录。缺少路径会在启动时报错，提示找不到相应的bean。在import后加入代码：  
 ```
 import org.mybatis.spring.annotation.MapperScan;
