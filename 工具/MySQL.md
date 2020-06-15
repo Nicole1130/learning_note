@@ -28,7 +28,7 @@
 7.服务开启后，命令行输入： mysql -u root -p 跳出输入密码提示，输入先前记录的初始密码。出现Welcome则表示已成功安装mysql。  
 8.在命令行mysql-> 后输入：set password='root'; （注意分号需输入）设置账户密码为root。  
 9.命令行输入：quit 。退出。  
-10.下载破解版数据库可视化工具Navicat，https://www.52pojie.cn/thread-952490-1-1.html。按操作说明破解安装。  
+10.下载破解版数据库可视化工具Navicat，https://www.52pojie.cn/thread-952490-1-1.html 按操作说明破解安装。  
 11.开启Navicat，【文件】-【新建连接】中输入连接名称、主机ip、用户名和密码。【测试连接】并点击【确定】完成。  
 ## 二、idea中创建springboot链接MySQL
 1.新建项目时除了勾选相应依赖外，还需添加【SQL】中【mysql driver】 和【mybatis framework】。
