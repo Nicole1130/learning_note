@@ -6,7 +6,6 @@
 <script src="js/jquery.cookie.min.js"></script>
 <script src="js/weui.min.js"></script>
 <!-------------------------------------------------------->
-<!-------------------------------------------------------->
 <!-- 点击查询按钮跳出提示框 -->
 <script type="text/javascript">
     $(function(){
@@ -47,7 +46,7 @@
 <script type="text/javascript">
     $(function(){
         $('#find').on('click', function(){
-            var options = $("#js_input").val(); #取val值后无需再.text()
+            var options = $("#js_input").val(); //取val值后无需再.text()
             weui.toast(options,1000);
         });
     });
@@ -83,3 +82,178 @@
         document.cookie = senten;
     }
 </script>
+<!-------------------------------------------------------->
+<!-- select动态加载 -->
+<script src="../js/jquery.min.js"></script>
+<script>
+    var floorItem = [1,2];
+    var departItem = ["人力1","人力2"];
+    // 一旦class_selecter状态改变就触发
+    $('#class_selecter').change(function () {
+        // 先清空原有选项
+        $('#item_selecter select').empty();
+        // 获取类别选项中选定项的文本
+        var classNow = jQuery("#class_selecter").find("option:selected").text();
+        if (classNow =="单元"){
+            // 遍历添加依赖项select的内容
+            for (var i = 0; i < floorItem.length; i++) {
+                $("#item_selecter select").append("<option>"+floorItem[i]+"</option>");
+            }
+        }
+        else {
+            for (var i = 0; i < departItem.length; i++) {
+                console.log(departItem[i]);
+                $("#item_selecter select").append("<option>"+departItem[i]+"</option>");
+            }
+        }
+    }
+    )
+</script>
+<!-------------------------------------------------------->
+<!-- 判断文件是否存在(不能用？？？) -->
+<script>
+    function fileExists(url){
+        console.log(url);
+        var isExists;
+        $.ajax({
+            url:url,
+            async:false,
+            type:'HEAD',
+            error:function(){
+                console.log("失败");
+                isExists=0;
+            },
+            success:function(){
+                console.log("成功");
+                isExists=1;
+            }
+        });
+        if(isExists==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+<!-------------------------------------------------------->
+<!-- 根据select选中内容携带get请求跳转页面 -->
+<script>
+    $(function() {
+        $("#searchButton").on("click",function(){
+            var options = jQuery("#class_selecter").find("option:selected").text();
+            var item = jQuery("#item_selecter").find("option:selected").text();
+            console.log(options+":"+item);
+            jump(options,item);
+        });
+
+        function jump(options,item){
+            var url = "/page/search_page.html?options="+options+"&item="+item;
+            window.location.href = config.server.context_path + url;
+        }
+    })
+</script>
+<!-------------------------------------------------------->
+<!-- 获取页面get请求 -->
+<script>
+    function GetRequest() {
+        var url = location.search;  // 获取url中"?"符后的字串，即get方法传递来的参数部分
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {  // 索引"?"位置，不为-1则代表有传参存在
+            var str = url.substr(1);  // 获取参数
+            strs = str.split("&"); //不同参数之间使用&分隔，此处将其分开
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]); //传参格式为参数名=参数值，此处将其分开并解码
+            }
+        }
+        return theRequest;
+    }
+</script>
+<!-------------------------------------------------------->
+<!-- list去重 -->
+<script type="text/javascript">
+    function unique(arr) {
+        let map = new Map();
+        let array = new Array();  // 数组用于返回结果
+        for (let i = 0; i < arr.length; i++) {
+            if(map .has(arr[i])) {  // 如果有该key值
+                map .set(arr[i], true);
+            } else {
+                map .set(arr[i], false);   // 如果没有该key值
+                array .push(arr[i]);
+            }
+        }
+        return array ;
+    }
+</script>
+<!-------------------------------------------------------->
+<!-- 使用previewImage实现图片浏览模式 -->
+<script src="previewImage.min.js"></script>
+<script type="text/javascript">
+    function imgPage(floor) {
+        var link = '../img/f'+floor+'.png';
+        var obj = {
+            urls : [link],  // 所有图片路径列表，可左右滑动的
+            current : link  // 第一张显示的图片路径
+        };
+        previewImage.start(obj);
+    }
+</script>
+<!-------------------------------------------------------->
+<!-- 动态加载表格table并使用超链接 -->
+<script type="text/javascript">
+    function creatTable(data){
+        //设置固定不变的表头部分html，tr是行，td是列，strong是加粗，后续逐渐续写该html
+        var tableData="<tr id='table_title'><td><strong>楼层</strong></td><td><strong>平面图</strong></td></tr>";
+        for(var i=0;i<data.length;i++){
+            // 共2列，此处设置每行第二列的位置（i从0开始，第一行第二列i=1，即每行最后一列为i % 2 == 1)）显示data元素，并设置超链接
+            if(i % 2 == 1)  {
+                // 使用a标签链接了一个点击即触发的onclick函数imgPage，并为该函数传入一个参数
+                var html = "<td><a href='javascript:void(0);' onclick='imgPage("+data[i-1]+");'>"+data[i]+"</a></td></tr>";
+                console.log(html);
+                tableData += html;
+            }
+            // 第1列（i % 2 == 0），设置每行起始标签tr
+            else{
+                tableData+="<tr><td>"+data[i]+"</td>";
+            }
+        }
+        $("#tbody1").html(tableData); // 将续写好的html值赋给id为tbody1的元素
+    }
+</script>   
+<!-------------------------------------------------------->
+<!-- 使用ajax向服务器发起访问并获取数据 -->
+<script type="text/javascript">
+    function getEmpFloorInfo(depart) {
+        $.ajax({
+            type : "post", //使用post方式访问
+            url :  config.server.context_path + "/floorInfo", //服务器地址
+            async: false, //设为false即为同步请求，在没有返回值之前，同步请求将锁住浏览器
+            data : {department : depart}, // 传参，其中服务器要求传入的参数名为department
+            success : function(floors) {  // 访问服务器成功（只代表接口访问成功，不代表服务器后台运行成功)则执行该部分，此处返回一个元素，接收到后起名为floors
+                var showList = [];
+                for (var ind in floors){
+                    var floor = floors[ind];
+                    if (floor != null){
+                        showList.push(floor);
+                        showList.push('查看');
+                    }
+                    else{
+                        break;
+                    }
+                }
+                creatTable(showList);
+            },
+            error: function (jqXHR, textStatus, errorThrown) { // 服务器访问失败
+                /*jqXHR对象的信息*/
+                console.log('jqXHR.responseText --> ',jqXHR.responseText);
+                console.log('jqXHR.status --> ',jqXHR.status);
+                console.log('jqXHR.readyState --> ',jqXHR.readyState);
+                console.log('jqXHR.statusText --> ',jqXHR.statusText);
+                /*其他两个参数的信息*/
+                console.log('textStatus --> ',textStatus);
+                console.log('errorThrown --> ',errorThrown);
+                weui.toast("载入楼层信息失败...",1000);
+            }
+        });
+    }
+</script>   
