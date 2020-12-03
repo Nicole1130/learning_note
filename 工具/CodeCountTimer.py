@@ -15,7 +15,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 url = 'http://localhost:8087/count/getThisWeekCodeCount' # 接口地址
 ROBOT_KEY = '89a76049-a623-415c-a2ac-6e6e3c41efd6' # 群机器人的key
-# id：显示名称
+# 用于代码统计的，id：显示名称
 nameDic = {
     "111": "名称1",
     "222": "名称2",
