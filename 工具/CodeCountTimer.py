@@ -43,9 +43,9 @@ def getCodeCount():
 
 
 def sendMSG():
-    rbt = WWXRobot(key=ROBOT_KEY)
+    rbt = WWXRobot(key=ROBOT_KEY) # 群机器人
     text = getCodeCount()
-    rbt.send_text(content=text)
+    rbt.send_text(content=text) # 发送消息
 
 
 def tick():
